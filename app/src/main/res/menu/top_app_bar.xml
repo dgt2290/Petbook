@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <!-- Settings, should always be in the overflow -->
+    <item android:id="@+id/favoritos"
+        android:title="@string/favoritos"
+        android:icon="@drawable/ic_star"
+        android:iconTint="@color/white"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/more"
+        android:title="@string/more"
+        android:icon="@drawable/ic_more_vert"
+        android:iconTint="@color/white"
+        app:showAsAction="ifRoom" />
+</menu>

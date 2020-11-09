@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Petbook</string>
+
+    // APP BAR
+    <string name="more">Más</string>
+    <string name="favoritos">Favoritos</string>
+</resources>
