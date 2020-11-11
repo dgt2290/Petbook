@@ -11,11 +11,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:title="@string/app_name"
+            app:titleTextAppearance="@style/toolbarTitle"
             app:menu="@menu/top_app_bar"
-            app:titleTextAppearance="@style/Widget.MaterialComponents.CardView"
-            app:navigationIcon="@mipmap/huella">
+            app:navigationIcon="@mipmap/huella"
+            app:layout_scrollFlags="enterAlways" />  <!-- Ocultar la AppBar -->
 
-        </com.google.android.material.appbar.MaterialToolbar>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

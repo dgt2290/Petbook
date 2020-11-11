@@ -13,7 +13,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:orientation="vertical">
 
         <LinearLayout
@@ -41,11 +40,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Rex"
-                android:textColor="@color/black"
-                android:textSize="45sp"
                 card_view:layout_constraintTop_toBottomOf="@+id/imageView"
-                tools:layout_editor_absoluteX="106dp" />
+                android:theme="@style/textViewNombre"/>
 
         </LinearLayout>
 
@@ -75,14 +71,11 @@
             android:id="@+id/huesos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5"
-            android:textStyle="bold"
             android:layout_marginRight="5dp"
-            android:textColor="@color/accent_red"
-            android:textSize="35sp"
             card_view:layout_constraintBottom_toBottomOf="@+id/imageView2"
             card_view:layout_constraintEnd_toStartOf="@+id/imageView2"
-            card_view:layout_constraintTop_toTopOf="@+id/imageView2" />
+            card_view:layout_constraintTop_toTopOf="@+id/imageView2"
+            android:theme="@style/textViewHuesos"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

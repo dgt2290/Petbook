@@ -14,17 +14,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.MascotaViewHolder> {
+public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaViewHolder> {
 
     private ArrayList<Mascota> mascotas;
     private ArrayList<Mascota> favoritos;
 
-    public MascotaAdaptador (ArrayList<Mascota> mascotas, ArrayList<Mascota> favoritos) {
+    public MascotaAdapter (ArrayList<Mascota> mascotas, ArrayList<Mascota> favoritos) {
         this.mascotas = mascotas;
         this.favoritos = favoritos;
     }
 
-    public MascotaAdaptador(ArrayList<Mascota> mascotas) {
+    public MascotaAdapter(ArrayList<Mascota> mascotas) {
         this.mascotas = mascotas;
     }
 

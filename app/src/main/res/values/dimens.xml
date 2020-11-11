@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="radius">7dp</dimen>
+
+    //Card View
+    <dimen name="textViewNombre">45sp</dimen>
+    <dimen name="textViewHuesos">35sp</dimen>
+
+    //TEXT
+    <dimen name="btnSiguiente">20sp</dimen>
+
+    //MARGENES
+    <dimen name="margen_top">5dp</dimen>
+    <dimen name="margen_bottom">5dp</dimen>
+    <dimen name="margen_left">10dp</dimen>
+    <dimen name="margen_right">10dp</dimen>
+    <dimen name="confirmar">30sp</dimen>
+    <dimen name="confirmar_top">30dp</dimen>
+    <dimen name="confirmar_bottom">30dp</dimen>
+
+
+    <dimen name="pad_top">15dp</dimen>
+    <dimen name="pad_bottom">15dp</dimen>
+    <dimen name="pad_left">10dp</dimen>
+    <dimen name="pad_right">10dp</dimen>
+
 </resources>

@@ -1,23 +1,32 @@
 package com.example.petbook;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    Intent i;
+
+    MaterialToolbar toolBar;
+    ArrayList<Mascota> mascotas;
+    ArrayList<Mascota> favoritos;
+    MascotaAdapter adaptador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +34,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Instanciamos los objetos
-        ArrayList<Mascota> mascotas;
-        ArrayList<Mascota> favoritos;
-
         if (getIntent().getExtras() == null) {
             mascotas = new ArrayList<>();
             favoritos = new ArrayList<>();
@@ -56,40 +62,32 @@ public class MainActivity extends AppCompatActivity {
             favoritos = (ArrayList<Mascota>) getIntent().getSerializableExtra("favoritos");
         }
 
-        //
+        // AppBar
+         toolBar = (MaterialToolbar) findViewById(R.id.topAppBar);
+        // Modificamos el ícono del menú de opciones con las siguientes dos líneas
+        Drawable iconoMenuOpciones = ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_more_vert);
+        toolBar.setOverflowIcon(iconoMenuOpciones);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-
-        // Inicializar LayoutManager
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(llm);
-
-        // Inicializar Adaptador
-        MascotaAdaptador adaptador = new MascotaAdaptador(mascotas, favoritos);
-        recyclerView.setAdapter(adaptador);
-
-        // Menú
-
-        MaterialToolbar toolBar = (MaterialToolbar) findViewById(R.id.topAppBar);
         toolBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.favoritos:
 
-                        Intent i = new Intent(MainActivity.this, SecActivity.class);
+                        i = new Intent(MainActivity.this, SecActivity.class);
                         i.putExtra("mascotas", mascotas);
                         i.putExtra("favoritos", favoritos);
                         startActivity(i);
 
                         return true;
 
-                    case R.id.more:
-                        // User chose the "Favorite" action, mark the current item
-                        // as a favorite...
-                        return true;
+                    case R.id.contacto:
 
+                        i = new Intent(MainActivity.this, FormularioContacto.class);
+
+                    case R.id.about:
+
+                        i = new Intent(MainActivity.this, FormularioContacto.class);
                     /* default:
                         // If we got here, the user's action was not recognized.
                         // Invoke the superclass to handle it.
@@ -99,7 +97,22 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment(mascotas);
+        PerfilFragment perfilFragment = (PerfilFragment) new PerfilFragment();
+        ArrayList<androidx.fragment.app.Fragment> fragments = new ArrayList<Fragment>();
+        fragments.add(recyclerViewFragment);
+        fragments.add(perfilFragment);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), fragments));
+        tabLayout.setupWithViewPager(viewPager);
+
     }
 
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.top_app_bar, menu);
+        return true;
+    }
 }

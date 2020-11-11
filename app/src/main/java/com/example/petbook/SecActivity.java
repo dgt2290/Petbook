@@ -31,8 +31,8 @@ public class SecActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(llm);
 
         // Inicializar Adaptador
-        MascotaAdaptador adaptador = new MascotaAdaptador(favoritos);
-        recyclerView.setAdapter(adaptador);
+         /*MascotaAdaptador adaptador = new MascotaAdaptador(favoritos);
+        recyclerView.setAdapter(adaptador); */
 
 
         MaterialToolbar toolBar = (MaterialToolbar) findViewById(R.id.topAppBar);

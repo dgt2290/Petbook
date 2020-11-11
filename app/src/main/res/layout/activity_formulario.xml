@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include android:id="@+id/miActionBar"
+            layout="@layout/action_bar"></include>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nombreTF"
+            style="@style/formulariosLayout"
+            android:hint="@string/nombreLabel"
+            app:hintTextColor="@color/dark_orange"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/formTxtImputNombre"
+                style="@style/formulariosTxtImput" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailTF"
+            style="@style/formulariosLayout"
+            android:hint="@string/emailLabel"
+            app:hintTextColor="@color/dark_orange"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/formTxtImputEmail"
+                style="@style/formulariosTxtImput"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mensajeTF"
+            android:hint="@string/msjLabel"
+            style="@style/formulariosLayout"
+            app:hintTextColor="@color/dark_orange"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/formTxtImputMsj"
+                style="@style/formulariosTxtImput"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/btnEnviar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/btnEnviar"
+            android:textSize="@dimen/btnSiguiente"
+            android:theme="@style/Widget.MaterialComponents.Button"
+            />
+
+    </LinearLayout>
+
+</ScrollView>
+
