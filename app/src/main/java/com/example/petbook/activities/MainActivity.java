@@ -1,11 +1,9 @@
-package com.example.petbook;
+package com.example.petbook.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -14,6 +12,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.petbook.R;
+import com.example.petbook.adapters.MascotaAdapter;
+import com.example.petbook.adapters.PagerAdapter;
+import com.example.petbook.fragments.PerfilFragment;
+import com.example.petbook.fragments.RecyclerViewFragment;
+import com.example.petbook.pojo.Mascota;
+import com.example.petbook.pojo.Publicacion;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.tabs.TabLayout;
 
@@ -22,11 +27,10 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     Intent i;
-
     MaterialToolbar toolBar;
     ArrayList<Mascota> mascotas;
     ArrayList<Mascota> favoritos;
-    MascotaAdapter adaptador;
+    ArrayList<Publicacion> publicaciones;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,14 @@ public class MainActivity extends AppCompatActivity {
             favoritos = (ArrayList<Mascota>) getIntent().getSerializableExtra("favoritos");
         }
 
+        publicaciones = new ArrayList<Publicacion>();
+        publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
+        publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
+        publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
+        publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
+        publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
+        publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
+
         // AppBar
          toolBar = (MaterialToolbar) findViewById(R.id.topAppBar);
         // Modificamos el ícono del menú de opciones con las siguientes dos líneas
@@ -77,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
                         i = new Intent(MainActivity.this, SecActivity.class);
                         i.putExtra("mascotas", mascotas);
                         i.putExtra("favoritos", favoritos);
+                        i.putExtra("publicaciones", publicaciones);
+
                         startActivity(i);
 
                         return true;
@@ -98,11 +112,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment(mascotas);
-        PerfilFragment perfilFragment = (PerfilFragment) new PerfilFragment();
-        ArrayList<androidx.fragment.app.Fragment> fragments = new ArrayList<Fragment>();
+        /** Declaraciones para poner en funcionamiento los fragments.
+            Al ViewPager se le pasa un FragmentAdapter al que a su vez le pasamos
+            un ArrayList de Fragments (en este caso RecyclerViewFragment y PerfilFragment)
+         */
+
+        // Declaramos los Fragments
+        RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment(mascotas, favoritos);
+        PerfilFragment perfilFragment = (PerfilFragment) new PerfilFragment(publicaciones);
+
+        // Los agregamos a un ArrayList de Fragments
+        ArrayList<Fragment> fragments = new ArrayList<Fragment>();
         fragments.add(recyclerViewFragment);
         fragments.add(perfilFragment);
+
+        // TabLayout y ViewPager son las clases que nos permiten switchear las vistas (fragments).
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), fragments));

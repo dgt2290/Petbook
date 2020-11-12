@@ -1,4 +1,4 @@
-package com.example.petbook;
+package com.example.petbook.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 
+import com.example.petbook.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class FormularioContacto extends AppCompatActivity {

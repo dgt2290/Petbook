@@ -1,4 +1,4 @@
-package com.example.petbook;
+package com.example.petbook.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

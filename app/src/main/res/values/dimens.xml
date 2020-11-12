@@ -24,4 +24,6 @@
     <dimen name="pad_left">10dp</dimen>
     <dimen name="pad_right">10dp</dimen>
 
+    <dimen name="layout_magin">19dp</dimen>
+
 </resources>

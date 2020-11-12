@@ -5,9 +5,8 @@
     android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="19dp"
+    android:layout_margin="@dimen/layout_magin"
     card_view:cardCornerRadius="@dimen/radius"
-
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout

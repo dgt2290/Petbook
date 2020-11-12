@@ -5,31 +5,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
-    <RelativeLayout
-        android:id="@+id/linearLayout2"
+    <include android:id="@+id/miActionBar"
+        layout="@layout/action_bar"></include>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <include android:id="@+id/miActionBar"
-            layout="@layout/action_bar"></include>
+    </androidx.viewpager.widget.ViewPager>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/miActionBar"
-
-            />
-
-    </RelativeLayout>
-
-
-    <!-- <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/foto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_menu_camera" /> -->
+        android:layout_below="@+id/miActionBar"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="625dp"
+        android:src="@drawable/ic_camera_enhance" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

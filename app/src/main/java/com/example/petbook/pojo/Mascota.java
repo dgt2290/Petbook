@@ -1,7 +1,6 @@
-package com.example.petbook;
+package com.example.petbook.pojo;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 
 public class Mascota implements Serializable { // Serializable permite que Mascota sea "parselable" para enviar el ArrayList a través del Intent

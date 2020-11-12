@@ -1,16 +1,17 @@
-package com.example.petbook;
+package com.example.petbook.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.petbook.pojo.Mascota;
+import com.example.petbook.R;
 
 import java.util.ArrayList;
 
@@ -19,13 +20,9 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
     private ArrayList<Mascota> mascotas;
     private ArrayList<Mascota> favoritos;
 
-    public MascotaAdapter (ArrayList<Mascota> mascotas, ArrayList<Mascota> favoritos) {
+    public MascotaAdapter(ArrayList<Mascota> mascotas, ArrayList<Mascota> favoritos) {
         this.mascotas = mascotas;
         this.favoritos = favoritos;
-    }
-
-    public MascotaAdapter(ArrayList<Mascota> mascotas) {
-        this.mascotas = mascotas;
     }
 
     public ArrayList<Mascota> getMascotas() {
@@ -98,6 +95,8 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
     public void agregarFavoritos(Mascota mascota) {
         getFavoritos().add(mascota);
     }
+
+
 
     public static class MascotaViewHolder extends RecyclerView.ViewHolder {
 
