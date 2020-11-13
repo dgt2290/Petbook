@@ -55,10 +55,10 @@ public class FormularioContacto extends AppCompatActivity {
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String fromEmail = "dgt2290@gmail.com";
-                String fromPassword = "KEV893OOS292";
+                String fromEmail = "****@gmail.com";
+                String fromPassword = "****";
                 List<String> toEmails = new ArrayList();
-                toEmails.add("dgt2290@gmail.com");
+                toEmails.add("****@gmail.com");
                 String emailSubject = "Nuevo comentario de "+nombre.toString();
                 String emailBody = "Email: "+mail.toString()+"\nMensaje: "+msj.toString();
                 new ProcessEmail(FormularioContacto.this).execute(
