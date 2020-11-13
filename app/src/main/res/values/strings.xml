@@ -18,11 +18,24 @@
     <string name="msjLabel">Mensaje</string>
 
     // BOTONES
-    <string name="btnSeleccionarFecha">Seleccionar</string>
     <string name="btnEnviar">Enviar</string>
-    <string name="btnEditar">Editar Datos</string>
-    <string name="Confirmacion">Confirmar Datos</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //BIO
+    <string name="bio">
+<![CDATA[
+<html>
+ <head></head>
+ <body style="text-align:justify;color:gray;">
+  <p>Mi nombre es Diego Trangoni, soy una persona proactiva con capacidad para trabajar en equipo y disposición para aprender nuevas técnicas y herramientas que me permitan optimizar mi desempeño en el ámbito laboral y profesional.</p>
+  <p>Estas cualidades se encuentran claramente reflejadas en mi trabajo diario y en la manera con la que me dirijo tanto a mis compañeros como a mis superiores. Tengo capacidad autodidacta y me encuentro en búsqueda de una labor que me permita aplicar la experiencia y los conocimientos que poseo como así también poder ampliarlos.</p>
+  <p>Mi perfil está claramente orientado hacia el mundo de la programación. He concluido varios cursos que complementan los estudios formales que todavía me encuentro cursando. Por lo pronto, la mayor experiencia que tengo en este rubro la he obtenido trabajando por cuenta propia en el desarrollo de un sitio web de viajes y turismo.</p>
+  <p>La actividad laboral que desempeño hace varios años guarda una estrecha relación con el campo de la tecnología y las telecomunicaciones. Ha significado una gran experiencia en lo que respecta a la atención al cliente, trabajo en equipo, cumplimiento de objetivos y, manejo y cuidado de las herramientas de trabajo.</p>
+  <p>En este ámbito mi mayor logro ha sido el desarrollo de una web que permitió optimizar significativamente uno de los procesos llevados a cabo por nuestro sector, minimizando los errores y automatizando parte de las tareas.</p>
+  <p>Cabe mencionar que a este trabajo lo llevé adelante a pesar de que excedía mis funciones y obligaciones, por otro lado, los procesos eran parte de la gestión de incidencias del cliente más importante de la empresa. Todo esto significó un reconocimiento por parte de la empresa y de mis pares.</p>
+
+ </body>
+</html>
+]]>
+    </string>
 
 </resources>

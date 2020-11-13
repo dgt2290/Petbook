@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         if (getIntent().getExtras() == null) {
             mascotas = new ArrayList<>();
             favoritos = new ArrayList<>();
+            publicaciones = new ArrayList<>();
             mascotas.add(new Mascota("Rex", R.drawable.pastor_aleman));
             mascotas.add(new Mascota("Blanquito", R.drawable.blanquito));
             mascotas.add(new Mascota("Tweety", R.drawable.canario2));
@@ -61,21 +62,22 @@ public class MainActivity extends AppCompatActivity {
             mascotas.add(new Mascota("Donatello", R.drawable.tortuga1));
             mascotas.add(new Mascota("Mica", R.drawable.siames));
             mascotas.add(new Mascota("Poly", R.drawable.loro));
+
+
+            publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
+            publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
+            publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
+            publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
+            publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
+            publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
         } else {
             mascotas = (ArrayList<Mascota>) getIntent().getSerializableExtra("mascotas");
             favoritos = (ArrayList<Mascota>) getIntent().getSerializableExtra("favoritos");
+            publicaciones = (ArrayList<Publicacion>) getIntent().getSerializableExtra("publicaciones");
         }
 
-        publicaciones = new ArrayList<Publicacion>();
-        publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
-        publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
-        publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
-        publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
-        publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
-        publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
-
         // AppBar
-         toolBar = (MaterialToolbar) findViewById(R.id.topAppBar);
+        toolBar = (MaterialToolbar) findViewById(R.id.topAppBar);
         // Modificamos el ícono del menú de opciones con las siguientes dos líneas
         Drawable iconoMenuOpciones = ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_more_vert);
         toolBar.setOverflowIcon(iconoMenuOpciones);
@@ -90,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
                         i.putExtra("mascotas", mascotas);
                         i.putExtra("favoritos", favoritos);
                         i.putExtra("publicaciones", publicaciones);
-
                         startActivity(i);
 
                         return true;
@@ -98,10 +99,22 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.contacto:
 
                         i = new Intent(MainActivity.this, FormularioContacto.class);
+                        i.putExtra("mascotas", mascotas);
+                        i.putExtra("favoritos", favoritos);
+                        i.putExtra("publicaciones", publicaciones);
+                        startActivity(i);
+
+                        return true;
 
                     case R.id.about:
 
-                        i = new Intent(MainActivity.this, FormularioContacto.class);
+                        i = new Intent(MainActivity.this, About.class);
+                        i.putExtra("mascotas", mascotas);
+                        i.putExtra("favoritos", favoritos);
+                        i.putExtra("publicaciones", publicaciones);
+                        startActivity(i);
+
+                        return true;
                     /* default:
                         // If we got here, the user's action was not recognized.
                         // Invoke the superclass to handle it.
@@ -119,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Declaramos los Fragments
         RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment(mascotas, favoritos);
-        PerfilFragment perfilFragment = (PerfilFragment) new PerfilFragment(publicaciones);
+        PerfilFragment perfilFragment = new PerfilFragment(publicaciones);
 
         // Los agregamos a un ArrayList de Fragments
         ArrayList<Fragment> fragments = new ArrayList<Fragment>();
@@ -131,6 +144,11 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), fragments));
         tabLayout.setupWithViewPager(viewPager);
+        // Setear íconos en para cada columna del TabLayout
+        int[] icons = {R.drawable.ic_photo_library, R.drawable.ic_pets} ;
+        for (int i = 0; i < tabLayout.getTabCount(); i++) {
+            tabLayout.getTabAt(i).setIcon(icons[i]);
+        }
 
     }
 

@@ -30,7 +30,7 @@ public class PerfilFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_perfil, container, false);
         RecyclerView recyclerViewPerfil = v.findViewById(R.id.recyclerViewPerfil);
-        recyclerViewPerfil.setAdapter(new PublicacionAdapter(publicaciones) );
+        recyclerViewPerfil.setAdapter(new PublicacionAdapter(publicaciones));
         GridLayoutManager glm = new GridLayoutManager(v.getContext(), 2);
         recyclerViewPerfil.setLayoutManager(glm);
         return v;

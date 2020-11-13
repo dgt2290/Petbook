@@ -54,7 +54,6 @@
     <style name="confirmar" parent="">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:text">@string/Confirmacion</item>
         <item name="android:textSize">@dimen/confirmar</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_marginTop">@dimen/confirmar_top</item>

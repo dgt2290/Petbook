@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.SecActivity" />
+        <activity android:name=".activities.FormularioContacto" />
+        <activity android:name=".activities.About" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
