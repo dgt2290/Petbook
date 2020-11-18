@@ -11,14 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.petbook.R;
 import com.example.petbook.adapters.PagerAdapter;
-import com.example.petbook.fragments.PerfilFragment;
-import com.example.petbook.fragments.RecyclerViewFragment;
+import com.example.petbook.vista.PerfilFragment;
+import com.example.petbook.vista.RecyclerViewFragment;
 import com.example.petbook.pojo.Mascota;
 import com.example.petbook.pojo.Publicacion;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -30,7 +28,6 @@ public class SecActivity extends AppCompatActivity {
 
     Intent i;
     MaterialToolbar toolBar;
-    ArrayList<Mascota> mascotas;
     ArrayList<Mascota> favoritos;
     ArrayList<Publicacion> publicaciones;
 
@@ -39,7 +36,6 @@ public class SecActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sec);
 
-        mascotas = (ArrayList<Mascota>) getIntent().getSerializableExtra("mascotas");
         favoritos = (ArrayList<Mascota>) getIntent().getSerializableExtra("favoritos");
         publicaciones = (ArrayList<Publicacion>) getIntent().getSerializableExtra("publicaciones");
 
@@ -54,7 +50,6 @@ public class SecActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SecActivity.this, MainActivity.class);
-                i.putExtra("mascotas", mascotas);
                 i.putExtra("favoritos", favoritos);
                 i.putExtra("publicaciones", publicaciones);
                 startActivity(i);
@@ -72,7 +67,6 @@ public class SecActivity extends AppCompatActivity {
                     case R.id.contacto:
 
                         i = new Intent(SecActivity.this, FormularioContacto.class);
-                        i.putExtra("mascotas", mascotas);
                         i.putExtra("favoritos", favoritos);
                         i.putExtra("publicaciones", publicaciones);
                         startActivity(i);
@@ -82,7 +76,6 @@ public class SecActivity extends AppCompatActivity {
                     case R.id.about:
 
                         i = new Intent(SecActivity.this, About.class);
-                        i.putExtra("mascotas", mascotas);
                         i.putExtra("favoritos", favoritos);
                         i.putExtra("publicaciones", publicaciones);
                         startActivity(i);
@@ -104,7 +97,7 @@ public class SecActivity extends AppCompatActivity {
          */
 
         // Declaramos los Fragments
-        RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment(favoritos, null);
+        RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment(favoritos);
         PerfilFragment perfilFragment = new PerfilFragment(publicaciones);
 
         // Los agregamos a un ArrayList de Fragments

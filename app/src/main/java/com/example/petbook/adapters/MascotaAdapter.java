@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.petbook.db.InteractorMascotas;
 import com.example.petbook.pojo.Mascota;
 import com.example.petbook.R;
 
@@ -69,6 +70,8 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
                     }
                 }
 
+                InteractorMascotas interactorMascotas = new InteractorMascotas(v.getContext());
+                interactorMascotas.darHueso(mascota);
             }
         });
     }

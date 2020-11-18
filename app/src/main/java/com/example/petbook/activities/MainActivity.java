@@ -13,10 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.petbook.R;
-import com.example.petbook.adapters.MascotaAdapter;
 import com.example.petbook.adapters.PagerAdapter;
-import com.example.petbook.fragments.PerfilFragment;
-import com.example.petbook.fragments.RecyclerViewFragment;
+import com.example.petbook.vista.PerfilFragment;
+import com.example.petbook.vista.RecyclerViewFragment;
 import com.example.petbook.pojo.Mascota;
 import com.example.petbook.pojo.Publicacion;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -28,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
     Intent i;
     MaterialToolbar toolBar;
-    ArrayList<Mascota> mascotas;
     ArrayList<Mascota> favoritos;
     ArrayList<Publicacion> publicaciones;
 
@@ -39,31 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Instanciamos los objetos
         if (getIntent().getExtras() == null) {
-            mascotas = new ArrayList<>();
+
             favoritos = new ArrayList<>();
             publicaciones = new ArrayList<>();
-            mascotas.add(new Mascota("Rex", R.drawable.pastor_aleman));
-            mascotas.add(new Mascota("Blanquito", R.drawable.blanquito));
-            mascotas.add(new Mascota("Tweety", R.drawable.canario2));
-            mascotas.add(new Mascota("Snoopy", R.drawable.beagle));
-            mascotas.add(new Mascota("Fly", R.drawable.border_collie));
-            mascotas.add(new Mascota("Clover", R.drawable.conejo));
-            mascotas.add(new Mascota("Gumer", R.drawable.bulldog_frances));
-            mascotas.add(new Mascota("Pirata", R.drawable.manchas));
-            mascotas.add(new Mascota("Pelusa", R.drawable.pelusa));
-            mascotas.add(new Mascota("Donald", R.drawable.duck));
-            mascotas.add(new Mascota("Manchas", R.drawable.gatito_gris));
-            mascotas.add(new Mascota("Marley", R.drawable.labrador));
-            mascotas.add(new Mascota("Anabella I", R.drawable.hamster1));
-            mascotas.add(new Mascota("Leonardo", R.drawable.tortuga));
-            mascotas.add(new Mascota("Terminator", R.drawable.gatito_naranja));
-            mascotas.add(new Mascota("Rocky", R.drawable.doberman));
-            mascotas.add(new Mascota("Anabella II", R.drawable.hamster2));
-            mascotas.add(new Mascota("Donatello", R.drawable.tortuga1));
-            mascotas.add(new Mascota("Mica", R.drawable.siames));
-            mascotas.add(new Mascota("Poly", R.drawable.loro));
-
-
             publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
             publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
             publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
@@ -71,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
             publicaciones.add(new Publicacion(R.drawable.pastor_aleman, 3));
         } else {
-            mascotas = (ArrayList<Mascota>) getIntent().getSerializableExtra("mascotas");
+
             favoritos = (ArrayList<Mascota>) getIntent().getSerializableExtra("favoritos");
             publicaciones = (ArrayList<Publicacion>) getIntent().getSerializableExtra("publicaciones");
         }
@@ -89,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.favoritos:
 
                         i = new Intent(MainActivity.this, SecActivity.class);
-                        i.putExtra("mascotas", mascotas);
+
                         i.putExtra("favoritos", favoritos);
                         i.putExtra("publicaciones", publicaciones);
                         startActivity(i);
@@ -99,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.contacto:
 
                         i = new Intent(MainActivity.this, FormularioContacto.class);
-                        i.putExtra("mascotas", mascotas);
+
                         i.putExtra("favoritos", favoritos);
                         i.putExtra("publicaciones", publicaciones);
                         startActivity(i);
@@ -109,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.about:
 
                         i = new Intent(MainActivity.this, About.class);
-                        i.putExtra("mascotas", mascotas);
+
                         i.putExtra("favoritos", favoritos);
                         i.putExtra("publicaciones", publicaciones);
                         startActivity(i);
@@ -131,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
          */
 
         // Declaramos los Fragments
-        RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment(mascotas, favoritos);
+        RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment(favoritos);
         PerfilFragment perfilFragment = new PerfilFragment(publicaciones);
 
         // Los agregamos a un ArrayList de Fragments
@@ -144,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), fragments));
         tabLayout.setupWithViewPager(viewPager);
+
         // Setear íconos en para cada columna del TabLayout
         int[] icons = {R.drawable.ic_photo_library, R.drawable.ic_pets} ;
         for (int i = 0; i < tabLayout.getTabCount(); i++) {

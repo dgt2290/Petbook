@@ -1,4 +1,4 @@
-package com.example.petbook.fragments;
+package com.example.petbook.vista;
 
 import android.os.Bundle;
 
@@ -16,7 +16,7 @@ import com.example.petbook.pojo.Publicacion;
 
 import java.util.ArrayList;
 
-public class PerfilFragment extends Fragment {
+public class PerfilFragment extends Fragment implements IPerfilFragmentView {
 
     ArrayList<Publicacion> publicaciones;
 
@@ -30,9 +30,26 @@ public class PerfilFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_perfil, container, false);
         RecyclerView recyclerViewPerfil = v.findViewById(R.id.recyclerViewPerfil);
-        recyclerViewPerfil.setAdapter(new PublicacionAdapter(publicaciones));
-        GridLayoutManager glm = new GridLayoutManager(v.getContext(), 2);
-        recyclerViewPerfil.setLayoutManager(glm);
+        inicializarRecyclerView(recyclerViewPerfil, crearGridLayoutManager(v, 2), crearAdaptador(publicaciones));
         return v;
+    }
+
+
+    @Override
+    public GridLayoutManager crearGridLayoutManager(View v, int col) {
+        GridLayoutManager glm = new GridLayoutManager(v.getContext(), col);
+        return glm;
+    }
+
+    @Override
+    public PublicacionAdapter crearAdaptador(ArrayList<Publicacion> publicaciones) {
+        PublicacionAdapter adapter = new PublicacionAdapter(publicaciones);
+        return adapter;
+    }
+
+    @Override
+    public void inicializarRecyclerView(RecyclerView rv, GridLayoutManager glm, PublicacionAdapter publicacionAdapter) {
+        rv.setAdapter(publicacionAdapter);
+        rv.setLayoutManager(glm);
     }
 }
