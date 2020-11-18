@@ -3,9 +3,11 @@
 En la actividad Favoritos (se accede con el ítem en forma de estrella en la Toolbar) los elementos NO fueron hardcodeados.
 Esta actividad muestra las mascotas a las que realmente se les dio like a través del botón del hueso. En cambio, en el fragmento que muestra el perfil de la mascota y sus publicaciones los elementos están hardcodeados para la visualización del diseño.
 
-Conceptos aplicados primera parte: MaterialToolbal, CardView, RecyclerView, Menú, Adapter, ViewHolder, Serializable.
+Conceptos aplicados primera versión: MaterialToolbal, CardView, RecyclerView, Menú, Adapter, ViewHolder, Serializable.
 
-Conceptos aplicados segunda parte: Fragment, FragmentPagerAdapter, ViewPager, TabLayout, WebView, OptionMenu, JavaMail (https://java.net/projects/javamail/pages/Android), CircularImageView (https://github.com/lopspower/CircularImageView)
+Conceptos aplicados segunda versión: Fragment, FragmentPagerAdapter, ViewPager, TabLayout, WebView, OptionMenu, JavaMail (https://java.net/projects/javamail/pages/Android), CircularImageView (https://github.com/lopspower/CircularImageView)
+
+Conceptos aplicados tercera versión: MVP, SQLiteOpenHelper, SQLiteDatabase, Cursor, 
 
 Nota: por razones de privacidad no se colocaron los datos de ninguna cuenta de correo para el envío del mail a través de la opción "Contacto" del menú de opciones, sin embargo la librería está implementada.
 
